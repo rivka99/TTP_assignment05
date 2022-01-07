@@ -1,0 +1,13 @@
+.grid{
+    display: inline-grid;
+    grid-template-columns: 20px 20px 20px;
+    grid-template-rows: 20px 20px 20px;
+    border: 2px solid black;
+    margin-left: 15px;
+}
+.grid-item{
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    padding: 5px;
+}
