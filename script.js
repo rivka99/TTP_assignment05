@@ -4,7 +4,7 @@ let squares = document.querySelectorAll("td")
 const table = document.querySelector('.c-table');
 let colorEl = document.getElementById("color-select")
 let fillUnfBtn = document.querySelector(".fill-unf")
-
+let fillAllBtn = document.querySelector(".fill-all")
 
 //this function adds a row to the table
 function addRow(tableClass){
@@ -78,6 +78,16 @@ fillUnfBtn.addEventListener('click',function(){
         }
 
 
+})
+})
+
+//this event listener listens for when the fill all cells button is clicked and fills
+//add the cells with the selected color
+fillAllBtn.addEventListener('click',function(){
+    const cells = document.querySelectorAll('td');
+    
+    cells.forEach(cell => {
+            cell.style.backgroundColor = colorEl.value
 })
 })
 
