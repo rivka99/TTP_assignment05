@@ -16,3 +16,8 @@ td{
 .row-btn{
     margin-left: 15px;
 }
+
+.red{
+    color: red;
+    background-color: red;
+}

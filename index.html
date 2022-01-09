@@ -8,6 +8,17 @@
         <h1>This is a grid</h1>
         <button class="row-btn">ADD ROW</button>
         <button class="column-btn">ADD COLUMN</button>
+
+        <select name="color" id="color-select">
+            <option value="">--Please choose an option--</option>
+            <option value="red" class="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+        </select>
+        
         <table class="c-table">
             <thead>
                 <tr>
@@ -18,7 +29,7 @@
                 </thead>
                 <tbody>
               <tr>
-                <td></td>
+                <td onclick="this.style.backgroundColor = 'Red';"></td>
                 <td></td>
                 <td></td>
               </tr>

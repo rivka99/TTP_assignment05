@@ -45,12 +45,13 @@ const table = document.querySelector('.c-table');
 
 
 table.addEventListener('click', (event) => {
+  console.log(document.getElementById("color-select").value)
   const rows = document.querySelectorAll('tr');
   const rowsArray = Array.from(rows);
   const rowIndex = rowsArray.findIndex(row => row.contains(event.target));
   const columns = Array.from(rowsArray[rowIndex].querySelectorAll('td'));
   const columnIndex = columns.findIndex(column => column == event.target);
   console.log(rowIndex-1, columnIndex)
-  document.querySelector(".c-table").tBodies[0].rows[rowIndex-1].cells[columnIndex].style.backgroundColor = "green"
+  document.querySelector(".c-table").tBodies[0].rows[rowIndex-1].cells[columnIndex].style.backgroundColor = document.getElementById("color-select").value
 })
 
