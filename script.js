@@ -1,14 +1,14 @@
-let rowBtn = document.querySelector(".row-btn")
-let colBtn = document.querySelector(".column-btn")
-let squares = document.querySelectorAll("td")
+const rowBtn = document.querySelector(".row-btn")
+const colBtn = document.querySelector(".column-btn")
+const squares = document.querySelectorAll("td")
 const table = document.querySelector('.c-table');
-let colorEl = document.getElementById("color-select")
-let fillUnfBtn = document.querySelector(".fill-unf")
-let fillAllBtn = document.querySelector(".fill-all")
-let clearBtn = document.querySelector(".clear-all")
-let rmColBtn = document.querySelector(".rm-col")
-let rmRowBtn = document.querySelector(".rm-row")
-
+const colorEl = document.getElementById("color-select")
+const fillUnfBtn = document.querySelector(".fill-unf")
+const fillAllBtn = document.querySelector(".fill-all")
+const clearBtn = document.querySelector(".clear-all")
+const rmColBtn = document.querySelector(".rm-col")
+const rmRowBtn = document.querySelector(".rm-row")
+let mouseIsDown = false
 
 //this event listener appends a new cell to the end of each row to create a column.
 colBtn.addEventListener("click", function(){
@@ -38,7 +38,7 @@ rowBtn.addEventListener("click", function(){
     
 })
 //this event listener calls removes a column from the table when remove column button is clicked
-rmColBtn.addEventListener("click", function(){
+rmColBtn.onclick = (function(){
     let row = table.rows;  
     let i = 0; 
     for (var j = 0; j < row.length; j++) {
@@ -48,7 +48,7 @@ rmColBtn.addEventListener("click", function(){
     }
 })
 //this function removes a row from the table
-rmRowBtn.addEventListener("click", function(){
+rmRowBtn.onclick = (function(){
     let tbObjs = table.tBodies[0];
     console.log(tbObjs.rows[1])
     if(tbObjs.rows[1]===undefined){
@@ -59,19 +59,26 @@ rmRowBtn.addEventListener("click", function(){
 })
 
 /*
-this event listener checks for when the table is clicked
-once it's clicked it fills rows with all the current rows in the table and creates an array from it
-it uses this to get the index of the cell that was clicked (uses event.target for this)
-then it gets the exact element that was clicked and changes the color based on the users selection of color 
-in the color selector */
-table.addEventListener('click', (event) => {
-  const rows = document.querySelectorAll('tr');
-  const rowsArray = Array.from(rows);
-  const rowIndex = rowsArray.findIndex(row => row.contains(event.target));
-  const columns = Array.from(rowsArray[rowIndex].querySelectorAll('td'));
-  const columnIndex = columns.findIndex(column => column == event.target);
-  document.querySelector(".c-table").tBodies[0].rows[rowIndex-1].cells[columnIndex].style.backgroundColor = colorEl.value
-})
+the functions below check when anywhere on the page has been clicked. If the area clicked is
+a table cell the colorTd function runs and assigns the cell to the value the user chose in the selector.
+If the mouse is down and the mouse is over the table, then it runs colorTd() function filling andy
+cell the mouse is over when mouse is down. This way you can click and drag to fill cells*/
+
+function colorTd(e){
+    e.target.tagName ==="TD" && (e.target.style.backgroundColor = colorEl.value)
+    }
+table.onclick = (e) => colorTd(e);
+
+document.onmousedown = (e) => {
+  mouseIsDown = true;
+  colorTd(e);
+};
+
+document.onmouseup = () => (mouseIsDown = false);
+table.onmouseover = (e) => mouseIsDown && colorTd(e);
+
+
+
 
 //this event listener listens for when the fill unfilled cells button is clicked. Once it is
 //it checks every single td element, if the background color is not set to a color option,
