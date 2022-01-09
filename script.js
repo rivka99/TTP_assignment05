@@ -7,6 +7,7 @@ let fillUnfBtn = document.querySelector(".fill-unf")
 let fillAllBtn = document.querySelector(".fill-all")
 let clearBtn = document.querySelector(".clear-all")
 let rmColBtn = document.querySelector(".rm-col")
+let rmRowBtn = document.querySelector(".rm-row")
 //this function adds a row to the table
 function addRow(tableClass){
     let tblBodyObj = document.querySelector(tableClass).tBodies[0];
@@ -21,7 +22,6 @@ function addRow(tableClass){
 	
 	}
 }
-
 //this function adds a column to the table
 function addColumn(tableClass){
 	let tblHeadObj = document.querySelector(tableClass).tHead;
@@ -57,6 +57,29 @@ rmColBtn.addEventListener("click", function(){
         row[j].deleteCell(i);
     }
 })
+//this function removes a row from the table
+rmRowBtn.addEventListener("click", function(){
+    let tblBodyObj = table.tBodies[0];
+    console.log(tblBodyObj.rows[1])
+    if(tblBodyObj.rows[1]===undefined){
+        alert("You cannot delete a table with a single row.")
+    }else{
+        tblBodyObj.deleteRow(1)
+    }
+    
+    //let newTR = document.createElement('tr');
+    // let newRow = tblBodyObj.insertRow()
+    // for(let i=0; i<tblBodyObj.rows[0].cells.length;i++){
+    //     let newCell = newRow.insertCell(-1);
+	// 	newCell.innerHTML = " "
+    
+  
+
+	
+	// }
+})
+
+
 /*
 this event listener checks for when the table is clicked
 once it's clicked it fills rows with all the current rows in the table and creates an array from it
@@ -71,9 +94,6 @@ table.addEventListener('click', (event) => {
   const columnIndex = columns.findIndex(column => column == event.target);
   document.querySelector(".c-table").tBodies[0].rows[rowIndex-1].cells[columnIndex].style.backgroundColor = colorEl.value
 })
-
-
-
 
 //this event listener listens for when the fill unfilled cells button is clicked. Once it is
 //it checks every single td element, if the background color is not set to a color option,
