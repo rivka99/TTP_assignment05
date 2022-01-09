@@ -11,7 +11,7 @@ const rmRowBtn = document.querySelector(".rm-row")
 let mouseIsDown = false
 
 //this event listener appends a new cell to the end of each row to create a column.
-colBtn.addEventListener("click", function(){
+colBtn.onclick = (function(){
     let tblHeadObj = table.tHead;
 	for (let i=0; i<tblHeadObj.rows.length; i++) {
 		let newTH = document.createElement('th');
@@ -27,7 +27,7 @@ colBtn.addEventListener("click", function(){
 	}
 })
 //this event listener adds a row to the table
-rowBtn.addEventListener("click", function(){
+rowBtn.onclick = (function(){
         let tbObjs = table.tBodies[0];
         let newTR = document.createElement('tr');
         let newRow = tbObjs.insertRow()
@@ -83,7 +83,7 @@ table.onmouseover = (e) => mouseIsDown && colorTd(e);
 //this event listener listens for when the fill unfilled cells button is clicked. Once it is
 //it checks every single td element, if the background color is not set to a color option,
 //it fills that cell with the selected color
-fillUnfBtn.addEventListener('click',function(){
+fillUnfBtn.onclick = (function(){
     const cells = document.querySelectorAll('td');
     colorArr = ["red","orange","yellow","green","blue","purple"]
     cells.forEach(cell => {
@@ -100,7 +100,7 @@ fillUnfBtn.addEventListener('click',function(){
 
 //this event listener listens for when the fill all cells button is clicked and fills
 //add the cells with the selected color
-fillAllBtn.addEventListener('click',function(){
+fillAllBtn.onclick = (function(){
     const cells = document.querySelectorAll('td');
     
     cells.forEach(cell => {
@@ -108,7 +108,7 @@ fillAllBtn.addEventListener('click',function(){
 })
 })
 
-clearBtn.addEventListener('click',function(){
+clearBtn.onclick = (function(){
     const cells = document.querySelectorAll('td');
     
     cells.forEach(cell => {

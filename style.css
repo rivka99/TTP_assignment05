@@ -8,6 +8,7 @@
 */
 body{
     background-color: seashell;
+    margin-left: 35px;
 }
 td{
     width: 10px;
@@ -17,17 +18,11 @@ td{
     background-color: white;
 } 
 table{
-    margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.row-btn{
-    margin-left: 20px;
-}
-
 .fill-unf{
     margin-top: 20px;
-    margin-left: 20px;
 }
 .fill-all{
     margin-top: 15px;
@@ -36,12 +31,12 @@ table{
     margin-top: 15px;
 }
 .head-line{
-    margin-left: 20px;
     background-color: thistle;
     color: darkblue;
     width: 450px;
+    padding: 7px;
+    border-radius: 2px;
 }
-
 button {
     border: 2px solid purple;
     border-radius: 20px;
@@ -55,4 +50,8 @@ button:hover {
 }
 .above-table{
     margin-bottom: 20px;
+    margin-bottom: 20px;
+}
+select{
+    margin-top: 30px;
 }
