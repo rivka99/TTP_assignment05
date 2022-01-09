@@ -5,7 +5,7 @@ const table = document.querySelector('.c-table');
 let colorEl = document.getElementById("color-select")
 let fillUnfBtn = document.querySelector(".fill-unf")
 let fillAllBtn = document.querySelector(".fill-all")
-
+let clearBtn = document.querySelector(".clear-all")
 //this function adds a row to the table
 function addRow(tableClass){
     let tblBodyObj = document.querySelector(tableClass).tBodies[0];
@@ -90,4 +90,13 @@ fillAllBtn.addEventListener('click',function(){
             cell.style.backgroundColor = colorEl.value
 })
 })
+
+clearBtn.addEventListener('click',function(){
+    const cells = document.querySelectorAll('td');
+    
+    cells.forEach(cell => {
+            cell.style.backgroundColor = "white"
+})
+})
+
 
