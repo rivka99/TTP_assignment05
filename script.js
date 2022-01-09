@@ -6,6 +6,7 @@ let colorEl = document.getElementById("color-select")
 let fillUnfBtn = document.querySelector(".fill-unf")
 let fillAllBtn = document.querySelector(".fill-all")
 let clearBtn = document.querySelector(".clear-all")
+let rmColBtn = document.querySelector(".rm-col")
 //this function adds a row to the table
 function addRow(tableClass){
     let tblBodyObj = document.querySelector(tableClass).tBodies[0];
@@ -37,6 +38,7 @@ function addColumn(tableClass){
 		newCell.innerHTML = " "
 	}
 }
+
 //this event listener calls the addcolumn function when the add column button is clicked
 colBtn.addEventListener("click", function(){
     addColumn(".c-table")
@@ -44,6 +46,16 @@ colBtn.addEventListener("click", function(){
 //this event listener calls the addRow function when the add row button is clicked
 rowBtn.addEventListener("click", function(){
     addRow(".c-table")
+})
+//this event listener calls removes a column from the table when remove column button is clicked
+rmColBtn.addEventListener("click", function(){
+    let row = table.rows;  
+    let i = 0; 
+    for (var j = 0; j < row.length; j++) {
+
+        // Deleting the ith cell of each row.
+        row[j].deleteCell(i);
+    }
 })
 /*
 this event listener checks for when the table is clicked
