@@ -8,44 +8,34 @@ let fillAllBtn = document.querySelector(".fill-all")
 let clearBtn = document.querySelector(".clear-all")
 let rmColBtn = document.querySelector(".rm-col")
 let rmRowBtn = document.querySelector(".rm-row")
-//this function adds a row to the table
-function addRow(tableClass){
-    let tblBodyObj = document.querySelector(tableClass).tBodies[0];
-    let newTR = document.createElement('tr');
-    let newRow = tblBodyObj.insertRow()
-    for(let i=0; i<tblBodyObj.rows[0].cells.length;i++){
-        let newCell = newRow.insertCell(-1);
-		newCell.innerHTML = " "
-    
-  
 
-	
-	}
-}
-//this function adds a column to the table
-function addColumn(tableClass){
-	let tblHeadObj = document.querySelector(tableClass).tHead;
+
+//this event listener appends a new cell to the end of each row to create a column.
+colBtn.addEventListener("click", function(){
+    let tblHeadObj = table.tHead;
 	for (let i=0; i<tblHeadObj.rows.length; i++) {
 		let newTH = document.createElement('th');
 		tblHeadObj.rows[i].appendChild(newTH);
 		newTH.innerHTML = " "
 	}
 
-	let tblBodyObj = document.querySelector(tableClass).tBodies[0];
+	let tbObjs = table.tBodies[0];
     
-	for (let i=0; i<tblBodyObj.rows.length; i++) {
-		let newCell = tblBodyObj.rows[i].insertCell(-1);
+	for (let i=0; i<tbObjs.rows.length; i++) {
+		let newCell = tbObjs.rows[i].insertCell(-1);
 		newCell.innerHTML = " "
 	}
-}
-
-//this event listener calls the addcolumn function when the add column button is clicked
-colBtn.addEventListener("click", function(){
-    addColumn(".c-table")
 })
-//this event listener calls the addRow function when the add row button is clicked
+//this event listener adds a row to the table
 rowBtn.addEventListener("click", function(){
-    addRow(".c-table")
+        let tbObjs = table.tBodies[0];
+        let newTR = document.createElement('tr');
+        let newRow = tbObjs.insertRow()
+        for(let i=0; i<tbObjs.rows[0].cells.length;i++){
+            let newCell = newRow.insertCell(-1);
+            newCell.innerHTML = " "
+        }
+    
 })
 //this event listener calls removes a column from the table when remove column button is clicked
 rmColBtn.addEventListener("click", function(){
@@ -59,26 +49,14 @@ rmColBtn.addEventListener("click", function(){
 })
 //this function removes a row from the table
 rmRowBtn.addEventListener("click", function(){
-    let tblBodyObj = table.tBodies[0];
-    console.log(tblBodyObj.rows[1])
-    if(tblBodyObj.rows[1]===undefined){
+    let tbObjs = table.tBodies[0];
+    console.log(tbObjs.rows[1])
+    if(tbObjs.rows[1]===undefined){
         alert("You cannot delete a table with a single row.")
     }else{
-        tblBodyObj.deleteRow(1)
+        tbObjs.deleteRow(1)
     }
-    
-    //let newTR = document.createElement('tr');
-    // let newRow = tblBodyObj.insertRow()
-    // for(let i=0; i<tblBodyObj.rows[0].cells.length;i++){
-    //     let newCell = newRow.insertCell(-1);
-	// 	newCell.innerHTML = " "
-    
-  
-
-	
-	// }
 })
-
 
 /*
 this event listener checks for when the table is clicked
