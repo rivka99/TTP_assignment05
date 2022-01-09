@@ -27,6 +27,7 @@ function addColumn(tableClass){
 	}
 
 	let tblBodyObj = document.querySelector(tableClass).tBodies[0];
+    
 	for (let i=0; i<tblBodyObj.rows.length; i++) {
 		let newCell = tblBodyObj.rows[i].insertCell(-1);
 		newCell.innerHTML = " "
@@ -39,3 +40,17 @@ colBtn.addEventListener("click", function(){
 rowBtn.addEventListener("click", function(){
     addRow(".c-table")
 })
+
+const table = document.querySelector('.c-table');
+
+
+table.addEventListener('click', (event) => {
+  const rows = document.querySelectorAll('tr');
+  const rowsArray = Array.from(rows);
+  const rowIndex = rowsArray.findIndex(row => row.contains(event.target));
+  const columns = Array.from(rowsArray[rowIndex].querySelectorAll('td'));
+  const columnIndex = columns.findIndex(column => column == event.target);
+  console.log(rowIndex-1, columnIndex)
+  document.querySelector(".c-table").tBodies[0].rows[rowIndex-1].cells[columnIndex].style.backgroundColor = "green"
+})
+
