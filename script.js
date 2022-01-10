@@ -52,9 +52,7 @@ rmColBtn.onclick = (function(){
 //this function removes a row from the table
 rmRowBtn.onclick = (function(){
     let tbObjs = table.tBodies[0];
-    if(tbObjs.rows[1]===undefined){
-        alert("You cannot delete a table with a single row.")
-    }else{
+    if(!(tbObjs.rows[1]===undefined)){ 
         tbObjs.deleteRow(1)
     }
 })
