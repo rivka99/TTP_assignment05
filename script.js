@@ -81,12 +81,8 @@ table.onmouseover = (e) => mouseIsDown && colorTd(e);
 //it fills that cell with the selected color
 fillUnfBtn.onclick = (function(){
     const cells = document.querySelectorAll('td');
-    colorArr = ["red","orange","yellow","green","blue","purple"]
     cells.forEach(cell => {
-       
-        let hold = cell.style.backgroundColor
-
-        if(!(colorArr.includes(hold))){
+        if(cell.style.backgroundColor===""||cell.style.backgroundColor==="white"){
             cell.style.backgroundColor = colorEl.value
         }
 
@@ -95,7 +91,7 @@ fillUnfBtn.onclick = (function(){
 })
 
 //this event listener listens for when the fill all cells button is clicked and fills
-//add the cells with the selected color
+//the cells with the selected color
 fillAllBtn.onclick = (function(){
     const cells = document.querySelectorAll('td');
     
@@ -104,6 +100,8 @@ fillAllBtn.onclick = (function(){
 })
 })
 
+//this event listener listens for when the clear all cells button is clicked and clears
+// the cells 
 clearBtn.onclick = (function(){
     const cells = document.querySelectorAll('td');
     
